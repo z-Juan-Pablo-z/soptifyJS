@@ -12,23 +12,6 @@ const PETICION={
     }
 }
 
-//RUTINA PARA CONSUMIR API CON METODO POST
-//1. URI PARA DONDE VOY 
-const URIPOST="https://accounts.spotify.com/api/token"
-
-//2. ALMACENO LOS DATOS DE ENVIO 
-let granttype="grant_type=client_credentials"
-let clienteid = "client_id=e7959ef7663f49fb92c9a42d8adba32b"
-let clienteSec="client_secret=52171f3afdc446e09af68c5b3056b38b"
-
-//3. CONFIGURO LA PETICION
-const PETICIONPOST={
-    method:"POST",
-    headers:{
-        "Content-type":"application/x-www-form-urlencoded"
-    },
-    body:granttype+'&'+clienteid+'&'+clienteSec
-}
 //4 VOY AL SERVIDOR  A CONSUMIR EL SERVICIO
 
 fetch(URIPOST,PETICIONPOST)
@@ -67,44 +50,4 @@ fetch(URI,PETICION)
     console.log(error);
 })
 
-//FUNCION PARA RECORRER UN ARREGLO
-function pintarCanciones(canciones) {
-    ///console.log(canciones);
-    let fila=document.getElementById("fila")
-    canciones.forEach(function(cancion){
-        //console.log(cancion);
-        console.log(cancion.name);
-        console.log(cancion.preview_url);
-        console.log(cancion.album.images[0]);
-
-        //rutina para llenar 
-        let columna=document.createElement("div")
-        columna.classList.add("col")
-
-        let tarjeta=document.createElement("div")
-        tarjeta.classList.add("card","h-100","shadow")
-
-        let nombre = document.createElement("h5")
-        nombre.classList.add("text-center")
-        nombre.textContent=cancion.name
-
-        let foto = document.createElement("img")
-        foto.classList.add("h-100")
-        foto.classList.add("w-100","img-fluid")
-        foto.src=cancion.album.images[0].url
-
-        let audio = document.createElement("audio")
-        audio.classList.add("w-100")
-        audio.setAttribute("controls","controls")
-        audio.src=cancion.preview_url
-        
-
-        //padres e hijos
-        tarjeta.appendChild(nombre)
-        tarjeta.appendChild(foto)
-        tarjeta.appendChild(audio)
-        columna.appendChild(tarjeta)
-        fila.appendChild(columna)
-    });
-    
-}*/
+*/
